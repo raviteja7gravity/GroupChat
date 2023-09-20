@@ -1,0 +1,10 @@
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const createRes = require("./utils/createRes");
+const messagesRoutes = require('./routes/messageRoutes');
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://127.0.0.1:27017/myChatApp");
+app.use(cors());
+app.use('/api/messages', messagesRoutes);
+app.listen(5000, console.log("app started at 5000"));
